@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 20-Set-2022 às 18:01
+-- Tempo de geração: 11-Out-2022 às 20:00
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -31,7 +31,8 @@ USE `livraria`;
 
 CREATE TABLE `editoras` (
   `cod_editoras` int(11) NOT NULL,
-  `nome_editora` varchar(120) DEFAULT NULL
+  `nome_editora` varchar(120) DEFAULT NULL,
+  `cidade_editora` varchar(120) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -44,6 +45,16 @@ CREATE TABLE `generos` (
   `cod_generos` int(11) NOT NULL,
   `nome_generos` varchar(120) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `generos`
+--
+
+INSERT INTO `generos` (`cod_generos`, `nome_generos`) VALUES
+(1, 'Biografia'),
+(2, 'Literatura'),
+(4, 'Didático'),
+(5, 'Quadrinhos');
 
 -- --------------------------------------------------------
 
@@ -73,6 +84,21 @@ CREATE TABLE `subgeneros` (
   `nome_ubgeneros` varchar(120) DEFAULT NULL,
   `cod_genero` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `subgeneros`
+--
+
+INSERT INTO `subgeneros` (`cod_subgeneros`, `nome_ubgeneros`, `cod_genero`) VALUES
+(1, 'História', 4),
+(2, 'Matemática', 4),
+(3, 'Literatura Infantojuvenil', 2),
+(4, 'Literatura Brasileira', 2),
+(5, 'Literatura Estrangeira', 2),
+(6, 'Mangá', 5),
+(7, 'Gibi', 5),
+(8, 'Autobiografia', 1),
+(9, 'Combater Ansiedade', 3);
 
 --
 -- Índices para tabelas despejadas
@@ -116,7 +142,7 @@ ALTER TABLE `editoras`
 -- AUTO_INCREMENT de tabela `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `cod_generos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_generos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `livros`
@@ -128,7 +154,7 @@ ALTER TABLE `livros`
 -- AUTO_INCREMENT de tabela `subgeneros`
 --
 ALTER TABLE `subgeneros`
-  MODIFY `cod_subgeneros` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_subgeneros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
